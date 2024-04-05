@@ -18,10 +18,10 @@ function reducer(state, action) {
 
 function App() {
   const sliderImages = [
-    '/images/boy44.png',
-    '/images/boy33.png',
-    '/images/boy22.png',
-    '/images/boy11.png',
+    '/images/boy4.png',
+    '/images/boy3.png',
+    '/images/boy2.png',
+    '/images/boy1.png',
   ];
   const [state, dispatch] = useReducer(reducer, initialState);
   const { sliderIndex, fat } = state;
