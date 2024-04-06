@@ -11,7 +11,7 @@ function reducer(state, action) {
       return { ...state, sliderIndex: action.payload };
     case 'SET_FAT':
       return { ...state, fat: action.payload };
-      case 'SET_SELECTED':
+    case 'SET_SELECTED':
       return { ...state, selected: action.payload };
     default:
       return state;
@@ -26,8 +26,8 @@ function App() {
     '/images/boy1.png',
   ];
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { sliderIndex, fat ,selected  } = state;
-  console.log("App ~ selected:", selected)
+  const { sliderIndex, fat, selected } = state;
+  console.log('App ~ selected:', selected);
 
   function changeFat(e) {
     const newFat = e.target.value;
@@ -55,8 +55,8 @@ function App() {
       newIndex = newIndex === 0 ? sliderImages.length - 1 : newIndex - 1;
     } else if (action === 'left') {
       newIndex = (newIndex + 1) % sliderImages.length;
-    }else {
-   newIndex = action
+    } else {
+      newIndex = action;
     }
 
     switch (newIndex) {
@@ -117,17 +117,27 @@ function App() {
           </div>
         </section>
 
-        <div className="flex items-center justify-center mb-8">
+        <div className="mb-8 flex items-center justify-center">
           <div>
             <label className="container">
-              <input onChange={toggleCheckbox} value={selected} checked={selected} type="checkbox" name="checkbox" id="m" />
+              <input
+                onChange={toggleCheckbox}
+                value={selected}
+                checked={selected}
+                type="checkbox"
+                name="checkbox"
+                id="m"
+              />
               <span className="checkmark"></span>
             </label>
           </div>
         </div>
 
-        <div className="w-full  mx-auto text-center">
-          <p className='pr-2 text-lg text-lime-200'>{fat}</p>
+        <div className="mx-auto  w-full text-center">
+          <p className="pr-2 text-lg text-lime-200">
+            <span className="text-sm">%</span> {fat}
+          </p>
+
           <input
             onChange={changeFat}
             dir="ltr"
@@ -155,9 +165,13 @@ function App() {
           </ul>
         </div>
 
-        <div 
-        style={{backgroundColor:`${selected ? "#a3e635" : ""}`,
-        color:`${selected ? "#3f3f46" : ""}`}} className="mx-auto mt-20 flex h-8 w-4/5 items-center justify-center font-semibold border-t border-lime-300 bg-zinc-700 shadow-sm  shadow-lime-300">
+        <div
+          style={{
+            backgroundColor: `${selected ? '#a3e635' : ''}`,
+            color: `${selected ? '#3f3f46' : ''}`,
+          }}
+          className="mx-auto mt-20 flex h-8 w-4/5 items-center justify-center border-t border-lime-300 bg-zinc-700 font-semibold shadow-sm  shadow-lime-300"
+        >
           <span>تایید و ادامه</span>
         </div>
       </div>
